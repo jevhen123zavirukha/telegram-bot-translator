@@ -80,6 +80,39 @@ def start(message):
     )
 
 
+# ---- Button: Information ----
+@bot.message_handler(func=lambda message: message.text == "Information ℹ️")
+def info(message):
+    """
+    Sends a short description about the bot and its commands.
+    """
+    bot.send_message(
+        message.chat.id,
+        "🤖 *Translator Bot*\n\n"
+        "This bot translates your messages into the language you choose.\n\n"
+        "🛠 Commands:\n"
+        "• /start — restart the bot\n"
+        "• Set language for translating ⚙️ — choose translation language\n"
+        "• Leave feedback❓ — send suggestions or ideas\n\n"
+        "Just type any message and I’ll translate it!",
+        parse_mode="Markdown"
+    )
+
+
+# ---- Button: Feedback ----
+@bot.message_handler(func=lambda message: message.text == "Leave feedback❓")
+def feedback(message):
+    """
+    Displays contact information for user feedback.
+    """
+    bot.send_message(
+        message.chat.id,
+        "✉️ You can send your feedback or suggestions here:\n"
+        "📧 Email: test@gmail.com\n"
+        "💻 GitHub: (add your link here)"
+    )
+
+
 # ---- Run the bot ----
 if __name__ == '__main__':
     print("Bot is running...")
