@@ -67,6 +67,19 @@ def set_language_keyboard():
     return markup
 
 
+@bot.message_handler(commands=['start'])
+def start(message):
+    """
+    Greets the user and displays the main keyboard menu.
+    """
+    bot.send_message(
+        message.chat.id,
+        "👋 Hello! I can translate any text you send.\n\n"
+        "First, choose the language you want me to translate into:",
+        reply_markup=main_keyboard()
+    )
+
+
 # ---- Run the bot ----
 if __name__ == '__main__':
     print("Bot is running...")
