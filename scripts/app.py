@@ -33,6 +33,40 @@ languages = {
 }
 
 
+# ---- Function: Main keyboard menu ----
+def main_keyboard():
+    """
+    Returns the main menu keyboard users see when they start the bot.
+    Includes buttons for:
+    - Information
+    - Leave feedback
+    - Set translation language
+    """
+    markup = ReplyKeyboardMarkup(resize_keyboard=True)
+    markup.add(
+        KeyboardButton("Information ℹ️"),
+        KeyboardButton("Leave feedback❓"),
+        KeyboardButton("Set language for translating ⚙️")
+    )
+    return markup
+
+
+# ---- Function: Language selection keyboard ----
+def set_language_keyboard():
+    """
+    Returns a keyboard with available languages for translation.
+    Arranges 3 buttons per row for better readability.
+    """
+    markup = ReplyKeyboardMarkup(resize_keyboard=True)
+    buttons = [KeyboardButton(lang) for lang in languages.keys()]
+
+    for i in range(0, len(buttons), 3):
+        markup.add(*buttons[i:i + 3])
+
+    markup.add("Back to main keyboard")
+    return markup
+
+
 # ---- Run the bot ----
 if __name__ == '__main__':
     print("Bot is running...")
